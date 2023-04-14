@@ -1,31 +1,4 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>
-			{% block title %}My Weekly Planner
-			{% endblock %}
-		</title>
-		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-		<link rel="stylesheet" type="text/css" href="{{ asset("css/bootstrap.css") }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset("css/style.css") }}">
-		<script type="text/javascript" src="{{ asset("js/script.js") }}" defer></script>
-		<script type="text/javascript" src="{{ asset("js/darkLight.js") }}" defer></script>
-		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-		{% block stylesheets %}
-			{{ encore_entry_link_tags('app') }}
-		{% endblock %}
-
-		{% block javascripts %}
-			{{ encore_entry_script_tags('app') }}
-		{% endblock %}
-	</head>
-	<body>
-		<!-- ### Menue ###-->
-		<header class="position-relative">
-			<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="check2" viewBox="0 0 16 16">
     <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
   </symbol>
@@ -44,7 +17,7 @@
 <!-- Navbar starts here -->
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top p-md-2 bg-opacity-75 shadow">
   <div class="container-fluid">
-    <!-- <a class="navbar-brand" href="../animals/index.php"><img src="../assets/images/logo.jpg" height="50px" alt="Adopt a Pet"> Adopt a Pet</a> -->
+    <a class="navbar-brand" href="../animals/index.php"><img src="../assets/images/logo.jpg" height="50px" alt="Adopt a Pet"> Adopt a Pet</a>
     <!-- Button for small devices -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -57,33 +30,33 @@
       <ul class="navbar-nav opacity-75">
         <li class="nav-item">
           <!-- if you are loged in as a User -->
-        <!--  <?php if ($_SESSION["username"] != "") {
+          <?php if ($_SESSION["username"] != "") {
             echo '<a class="btn btn-link nav-link card" type="button" data-bs-target=".navbar-collapse.show" href="../user/home.php?">Your Account ' . $_SESSION["username"] . '</a>';
           } else {
             echo '<a class="btn btn-link nav-link card" type="button" data-bs-target=".navbar-collapse.show" href="../user/index.php">Login</a>';
           }
           ?>
-        </li>-->
+        </li>
         <!-- if you are an admin you can add animals -->
-      <!--  <li class="nav-item">
+        <li class="nav-item">
           <?php if ($_SESSION["logedin"] == "admin") {
             echo '<a class="btn btn-link nav-link card mx-3" data-bs-target=".navbar-collapse.show" href="../animals/create.php">New Animal</a>';
           } ?>
-        </li>-->
+        </li>
 
         <!-- the animal selectin starts here -->
-    <!--    <li class="nav-item dropdown">
+        <li class="nav-item dropdown">
           <button type="button" class="btn btn-link nav-link card py-2 ms-3 dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
             <span class="d-lg-none" aria-hidden="true"></span><span class="visually-hidden"></span> Animal Filter <span class="visually-hidden"></span>
           </button>
           <ul class="dropdown-menu dropdown-menu-end">
             <li>
               <a class="dropdown-item d-flex align-items-center justify-content-between active" aria-current="true" href="../animals/index.php">
-                All -->
+                All
                 <!-- <svg class="bi">
                   <use xlink:href="#check2"></use>
                 </svg> -->
-         <!--     </a>
+              </a>
             </li>
         </li>
         <li><a class="dropdown-item" href="../animals/index.php?filter=senior">Adult</a></li>
@@ -99,7 +72,7 @@
         <li><a class="dropdown-item" href="../animals/index.php?filter=adopted">Adopted</a></li>
         <li><a class="dropdown-item" href="../animals/index.php?filter=notadopted">Available</a></li>
       </ul>
-      </li>-->
+      </li>
 
       <!-- light dark mode selectio starts here -->
       <li class="nav-item dropdown">
@@ -149,57 +122,3 @@
     </div>
   </div>
 </nav>
-
-			<!-- ### Hero Image ### -->
-			<h1 class="vw-auto d-block display-5 position-absolute top-50 start-50 translate-middle text-center text-white bg-dark  bg-opacity-75 px-4 py-5">
-				Weekly planner</h1>
-			<img style="object-fit: cover; object-position: center; width: 100vw; height: 35vh; margin-bottom: 1rem;" src="{{ asset("images/heroImage.jpg") }}" alt="watches">
-		</header>
-		{% block body %}{% endblock %}
-		<!-- ###########################################
-												       ###               Footer                ###
-												       ###########################################-->
-
-		<!-- ### Social Media Links ### -->
-		<footer class="container-fluid mt-5 bg-dark text-white text-center ">
-		<!-- 	<div class="mb-2 fs-6 pt-2">
-				<i class="bi bi-facebook"></i>
-				<i class="bi bi-twitter"></i>
-				<i class="bi bi-google"></i>
-				<i class="bi bi-instagram"></i> -->
-				<a href="https://www.linkedin.com/in/thomas-netusil-8983b8164/" target="_blank">
-					<i class="bi bi-linkedin"></i>
-				</a>
-				<a href="https://github.com/thomas-wien/BE18-CR6-NetusilThomas.git" target="_blank">
-					<i class="bi bi-github"></i>
-				</a>
-			</div>
-
-			<!-- ### Newsletter ### -->
-<!-- 
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="d-flex justify-content-between align-items-center flex-column flex-md-row text-center text-md-left">
-							<h5 class="flex-fill text-start">Subscribe to our newsletter</h5>
-							<form action="#" class="row flex-fill">
-								<div class="col-lg-10 my-md-2 my-2">
-									<input type="email" class="form-control px-4 border-0 w-100 text-center text-md-left" id="email" placeholder="Your Email" name="email">
-								</div>
-								<div class="col-lg-2 my-md-1 my-1">
-									<button type="submit" class="btn btn-outline-light btn-sm w-100 mt-2">Subscribe</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
--->
-			<!-- ### Copyright ###  -->
-
-			<p class="fs-6 mt-2 pb-2">&copy; 2023 Copyright Thomas Netusil</p>
-		</footer>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-
-	</body>
-</html>
