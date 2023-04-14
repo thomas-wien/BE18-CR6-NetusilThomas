@@ -21,6 +21,54 @@ class EventController extends AbstractController
         ]);
     }
 
+    #[Route('/sort', name: 'app_event_sort', methods: ['GET'])]
+    public function sort(EventRepository $eventRepository): Response
+    {
+        return $this->render('event/index.html.twig', [
+            'events' => $eventRepository->findBy(array(), array('date' => 'ASC')),
+        ]);
+    }
+
+    #[Route('/music', name: 'app_event_music', methods: ['GET'])]
+    public function music(EventRepository $eventRepository): Response
+    {
+        return $this->render('event/index.html.twig', [
+            'events' => $eventRepository->findBy(array('typa' => 'music'), array('date' => 'ASC')),
+        ]);
+    }
+
+    #[Route('/exhibition', name: 'app_event_exhibition', methods: ['GET'])]
+    public function exhibition(EventRepository $eventRepository): Response
+    {
+        return $this->render('event/index.html.twig', [
+            'events' => $eventRepository->findBy(array('typa' => 'exhibition'), array('date' => 'ASC')),
+        ]);
+    }
+    
+    #[Route('/opera', name: 'app_event_opera', methods: ['GET'])]
+    public function opera(EventRepository $eventRepository): Response
+    {
+        return $this->render('event/index.html.twig', [
+            'events' => $eventRepository->findBy(array('typa' => 'opera'), array('date' => 'ASC')),
+        ]);
+    }
+
+    #[Route('/movie', name: 'app_event_movie', methods: ['GET'])]
+    public function movie(EventRepository $eventRepository): Response
+    {
+        return $this->render('event/index.html.twig', [
+            'events' => $eventRepository->findBy(array('typa' => 'movie'), array('date' => 'ASC')),
+        ]);
+    }
+
+    #[Route('/theatre', name: 'app_event_theatre', methods: ['GET'])]
+    public function theatre(EventRepository $eventRepository): Response
+    {
+        return $this->render('event/index.html.twig', [
+            'events' => $eventRepository->findBy(array('typa' => 'theatre'), array('date' => 'ASC')),
+        ]);
+    }
+
     #[Route('/new', name: 'app_event_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EventRepository $eventRepository): Response
     {

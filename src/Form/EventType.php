@@ -5,6 +5,8 @@ namespace App\Form;
 use App\Entity\Event;
 use App\Entity\Status;
 use Doctrine\DBAL\Types\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -50,11 +52,11 @@ class EventType extends AbstractType
             'capacity',
             TypeTextType::class,
             [
-                'attr' => ['class' => 'form-control', 'placeholder' => 'Please enter the allowed Capacity', 'style' => 'margin-bottom:15px']                ]
+                'attr' => ['class' => 'form-control', 'placeholder' => 'Please enter the allowed Capacity 0 if no estriction 0 ', 'style' => 'margin-bottom:15px']                ]
           )   
         ->add(
             'email',
-            TypeTextType::class,
+            EmailType::class,
             [
                 'attr' => ['class' => 'form-control', 'placeholder' => 'Please enter the email of the location', 'style' => 'margin-bottom:15px']                ]
           )  
@@ -96,7 +98,7 @@ class EventType extends AbstractType
           ) 
        
           ->add('typa', ChoiceType::class, [
-            'choices' => ['music' => 'music', 'sport' => 'sport', 'opera' => 'opera', 'movie' => 'movie', 'theatre' => 'theatre'],
+            'choices' => ['music' => 'music', 'exhibition' => 'exhibition', 'opera' => 'opera', 'movie' => 'movie', 'theatre' => 'theatre'],
             'attr' => ['class' => 'form-control', 'style' => 'margin-bottom:15px']
         ])
    
