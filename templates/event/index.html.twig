@@ -1,59 +1,124 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Tasks index
+{% endblock %}
+
+{% block body %}
+<main class="container">
+    <hgroup class="row">
+        <h2 class="col-6">Events</h1>
+            <p class="col-6 fs-5 text-end pt-1">Sort by date:
+                <a id="sort" class="btn btn-sm btn-light" href="sort">
+                    <i class="bi bi-sort-up"></i>
+                </a>
+            </p>
+    </hgroup>
+
+
+    <div id="ToDo" class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+        {% for event in events %}
+        <div>
+            <div class="card p-3 mb-5">
+                <hgroup class="row">
+                    <p class="col-4 p-2 ms-3 btn btn-info btn-sm w-25 text-white">{{ event.typa }}</p>
+                    <p class="col-8 fs-6 text-end pt-1">
+                        <i class="bi bi-bookmark"></i>
+                        <i class="bi bi-three-dots-vertical"></i>
+                    </p>
+                </hgroup>
+
+                <a href="{{ path('app_event_show', {'id': event.id}) }}"><img src="{{ asset("images/" ~
+                        event.imageName) }}" class="card-img-top" alt="{{ event.name }}"></a>
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{ event.name }}</h5>
+                    <p class="card-text text-center">{{ event.description }}</p>
+                    <hr>
+                    <p>{{ event.street }} {{ event.number }}</p>
+                    <p>{{ event.zip }} {{ event.city }}</p>
+                    <p>
+                        <i class="bi bi-calendar-week"></i>
+                        Date:
+                        {{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}
+                    </p>
+                </div>
+                <div class="card-footer text-end">
+                    <a class="btn btn-sm btn-secondary" href="{{ path('app_event_show', {'id': event.id}) }}">show</a>
+                    {% if is_granted("ROLE_ADMIN") %}
+                    <a class="btn btn-sm btn-secondary" href="{{ path('app_event_edit', {'id': event.id}) }}">edit</a>
+                    <a class="btn">
+                        {{ include('event/_delete_form.html.twig') }}</a>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</main>
+
+{% if is_granted("ROLE_ADMIN") %}
+<a class="btn btn-sm btn-warning" href=" {{ path('app_event_new') }} ">Create new</a>
+{% endif %}
+{% endblock %}
+
+{# {% extends 'base.html.twig' %}
+
 {% block title %}Event index{% endblock %}
 
 {% block body %}
-    <h1>Event index</h1>
+<h1>Event index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Date</th>
-                <th>Description</th>
-                <th>Capacity</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Location</th>
-                <th>Street</th>
-                <th>Number</th>
-                <th>Zip</th>
-                <th>City</th>
-                <th>Url</th>
-                <th>Typa</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Capacity</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Location</th>
+            <th>Street</th>
+            <th>Number</th>
+            <th>Zip</th>
+            <th>City</th>
+            <th>Url</th>
+            <th>Typa</th>
+            <th>actions</th>
+        </tr>
+    </thead>
+    <tbody>
         {% for event in events %}
-            <tr>
-                <td>{{ event.id }}</td>
-                <td>{{ event.name }}</td>
-                <td>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ event.description }}</td>
-                <td>{{ event.capacity }}</td>
-                <td>{{ event.email }}</td>
-                <td>{{ event.phone }}</td>
-                <td>{{ event.location }}</td>
-                <td>{{ event.street }}</td>
-                <td>{{ event.number }}</td>
-                <td>{{ event.zip }}</td>
-                <td>{{ event.city }}</td>
-                <td>{{ event.url }}</td>
-                <td>{{ event.typa }}</td>
-                <td>
-                    <a href="{{ path('app_event_show', {'id': event.id}) }}">show</a>
-                    <a href="{{ path('app_event_edit', {'id': event.id}) }}">edit</a>
-                </td>
-            </tr>
+        <tr>
+            <td>{{ event.id }}</td>
+            <td>{{ event.name }}</td>
+            <td>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</td>
+            <td>{{ event.description }}</td>
+            <td>{{ event.capacity }}</td>
+            <td>{{ event.email }}</td>
+            <td>{{ event.phone }}</td>
+            <td>{{ event.location }}</td>
+            <td>{{ event.street }}</td>
+            <td>{{ event.number }}</td>
+            <td>{{ event.zip }}</td>
+            <td>{{ event.city }}</td>
+            <td>{{ event.url }}</td>
+            <td>{{ event.typa }}</td>
+            <td>
+                <a href="{{ path('app_event_show', {'id': event.id}) }}">show</a>
+                <a href="{{ path('app_event_edit', {'id': event.id}) }}">edit</a>
+            </td>
+        </tr>
         {% else %}
-            <tr>
-                <td colspan="15">no records found</td>
-            </tr>
+        <tr>
+            <td colspan="15">no records found</td>
+        </tr>
         {% endfor %}
-        </tbody>
-    </table>
+    </tbody>
+</table>
 
-    <a href="{{ path('app_event_new') }}">Create new</a>
-{% endblock %}
+<a href="{{ path('app_event_new') }}">Create new</a>
+{% endblock %} #}

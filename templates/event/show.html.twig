@@ -1,74 +1,127 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Event
+{% endblock %}
+
+{% block body %}
+<div class="container pb-5">
+    <div class="title text-center">
+        <h1 class="my-5">Details</h1>
+    </div>
+    <div class='card'>
+        <div class='row'>
+            <div class='col-sm-5 col-md-4'>
+                <img src="{{ asset("images/" ~ event.imageName) }}" class="card-img img-fluid rounded-start p-2"
+                    alt="{{ event.name }}">
+                <div class='card-footer text-center mx-auto space-around w-100'>
+                    <a class='col-4 p-2 ms-3 btn btn-secondary btn-sm w-25 text-white' href='{{ path('app_event_index')
+                        }}'>Home</a>
+                    {% if is_granted("ROLE_ADMIN") %}
+                    <a class='col-4 p-2 ms-3 btn btn-secondary btn-sm w-25 text-white' href='{{ path('app_event_edit',
+                        {'id': event.id}) }}'>Update</a>
+                    <a class="btn p-2 w-25">
+                        {{ include('event/_delete_form.html.twig') }}</a>
+                    <div class='mb-3 pt-5 text-center'>
+                        <a class="p-2 ms-3 btn btn-success btn-sm w-75 text-white"
+                            href="{{ path('app_event_new') }}">Create a new Event</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class='col-sm-7 col-md-8'>
+                <div class='card-body'>
+                    <h5 class='card-title'>{{ event.name }}<h5>
+                            <h5 class='card-title'>{{ event.description }}</h5>
+                            <p class='card-text'>{{ event.longDescription }}</p>
+
+                            <p>{{ event.street }} {{ event.number }}</p>
+                            <p>{{ event.zip }} {{ event.city }}</p>
+
+
+                            <p class='card-text'>
+                                <i class="bi bi-calendar-week"></i>
+                                Date:
+                                {{ event.date ? event.date|date('Y-m-d') : '' }}
+                            </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+{% endblock %}
+{# {% extends 'base.html.twig' %}
+
 {% block title %}Event{% endblock %}
 
 {% block body %}
-    <h1>Event</h1>
+<h1>Event</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ event.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ event.name }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ event.description }}</td>
-            </tr>
-            <tr>
-                <th>Capacity</th>
-                <td>{{ event.capacity }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ event.email }}</td>
-            </tr>
-            <tr>
-                <th>Phone</th>
-                <td>{{ event.phone }}</td>
-            </tr>
-            <tr>
-                <th>Location</th>
-                <td>{{ event.location }}</td>
-            </tr>
-            <tr>
-                <th>Street</th>
-                <td>{{ event.street }}</td>
-            </tr>
-            <tr>
-                <th>Number</th>
-                <td>{{ event.number }}</td>
-            </tr>
-            <tr>
-                <th>Zip</th>
-                <td>{{ event.zip }}</td>
-            </tr>
-            <tr>
-                <th>City</th>
-                <td>{{ event.city }}</td>
-            </tr>
-            <tr>
-                <th>Url</th>
-                <td>{{ event.url }}</td>
-            </tr>
-            <tr>
-                <th>Typa</th>
-                <td>{{ event.typa }}</td>
-            </tr>
-        </tbody>
-    </table>
+<table class="table">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ event.id }}</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>{{ event.name }}</td>
+        </tr>
+        <tr>
+            <th>Date</th>
+            <td>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ event.description }}</td>
+        </tr>
+        <tr>
+            <th>Capacity</th>
+            <td>{{ event.capacity }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ event.email }}</td>
+        </tr>
+        <tr>
+            <th>Phone</th>
+            <td>{{ event.phone }}</td>
+        </tr>
+        <tr>
+            <th>Location</th>
+            <td>{{ event.location }}</td>
+        </tr>
+        <tr>
+            <th>Street</th>
+            <td>{{ event.street }}</td>
+        </tr>
+        <tr>
+            <th>Number</th>
+            <td>{{ event.number }}</td>
+        </tr>
+        <tr>
+            <th>Zip</th>
+            <td>{{ event.zip }}</td>
+        </tr>
+        <tr>
+            <th>City</th>
+            <td>{{ event.city }}</td>
+        </tr>
+        <tr>
+            <th>Url</th>
+            <td>{{ event.url }}</td>
+        </tr>
+        <tr>
+            <th>Typa</th>
+            <td>{{ event.typa }}</td>
+        </tr>
+    </tbody>
+</table>
 
-    <a href="{{ path('app_event_index') }}">back to list</a>
+<a href="{{ path('app_event_index') }}">back to list</a>
 
-    <a href="{{ path('app_event_edit', {'id': event.id}) }}">edit</a>
+<a href="{{ path('app_event_edit', {'id': event.id}) }}">edit</a>
 
-    {{ include('event/_delete_form.html.twig') }}
-{% endblock %}
+{{ include('event/_delete_form.html.twig') }}
+{% endblock %} #}
