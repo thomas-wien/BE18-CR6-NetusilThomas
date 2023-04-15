@@ -16,15 +16,23 @@
                 <div class='card-footer text-center mx-auto space-around w-100'>
                     <h6><strong>{{ event.location }}</strong></h6>
                     <h6>{{ event.street }} {{ event.number }}</h6>
-                            <p>{{ event.zip }} {{ event.city }}</p>
-
-
-                            <p class='card-text'>
-                                <i class="bi bi-calendar-week"></i>
-                                Date:
-                                {{ event.date ? event.date|date('Y-m-d') : '' }}<br>
-                                {{ event.date ? event.date|date('h:i a') : '' }} 
-                            </p>
+                    <p>{{ event.zip }} {{ event.city }}</p>
+                    <p>Internet: <a href="http://{{ event.url }}" target="_blank" style="text-decoration: none;"
+                            rel="noopener noreferrer">{{ event.url }}</a>
+                    <p>Mail: <a href="mailto:{{ event.email }}" target="_blank" style="text-decoration: none;"
+                            rel="noopener noreferrer">{{ event.email
+                            }}</a>
+                    </p>
+                    <p>Phone: <a href="tel:{{ event.phone }}" target="_blank" style="text-decoration: none;"
+                            rel="noopener noreferrer">{{ event.phone
+                            }}</a>
+                    </p>
+                    <p class='card-text'>
+                        <i class="bi bi-calendar-week"></i>
+                        Date:
+                        {{ event.date ? event.date|date('Y-m-d') : '' }}<br>
+                        {{ event.date ? event.date|date('h:i a') : '' }}
+                    </p>
                     <a class='col-4 p-2 ms-3 btn btn-secondary btn-sm w-25 text-white' href="{{ path('app_event_index')
                         }}">Home</a>
                     {% if is_granted("ROLE_ADMIN") %}
