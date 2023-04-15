@@ -4,6 +4,6 @@ controllers:
         namespace: App\Controller
     type: attribute
 
-# homepage:
-# path: /
-#     controller: App\Controller\EventController::index
+homepage:
+    path: /
+    controller: App\Controller\EventController::index
