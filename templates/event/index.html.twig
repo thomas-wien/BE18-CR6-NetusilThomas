@@ -33,12 +33,13 @@
                     <h5 class="card-title text-center">{{ event.name }}</h5>
                     <p class="card-text text-center">{{ event.description }}</p>
                     <hr>
-                    <p>{{ event.street }} {{ event.number }}</p>
+                    <h6><strong>{{ event.location }}</strong></h6>
+                    <h6>{{ event.street }} {{ event.number }}</h6>
                     <p>{{ event.zip }} {{ event.city }}</p>
                     <p>
                         <i class="bi bi-calendar-week"></i>
                         Date:
-                        {{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}
+                        {{ event.date ? event.date|date('Y-m-d h:i a') : '' }}
                     </p>
                 </div>
                 <div class="card-footer text-end">

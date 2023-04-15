@@ -14,6 +14,17 @@
                 <img src="{{ asset('images/' ~ event.imageName) }}" class="card-img img-fluid rounded-start p-2"
                     alt="{{ event.name }}">
                 <div class='card-footer text-center mx-auto space-around w-100'>
+                    <h6><strong>{{ event.location }}</strong></h6>
+                    <h6>{{ event.street }} {{ event.number }}</h6>
+                            <p>{{ event.zip }} {{ event.city }}</p>
+
+
+                            <p class='card-text'>
+                                <i class="bi bi-calendar-week"></i>
+                                Date:
+                                {{ event.date ? event.date|date('Y-m-d') : '' }}<br>
+                                {{ event.date ? event.date|date('h:i a') : '' }} 
+                            </p>
                     <a class='col-4 p-2 ms-3 btn btn-secondary btn-sm w-25 text-white' href="{{ path('app_event_index')
                         }}">Home</a>
                     {% if is_granted("ROLE_ADMIN") %}
@@ -33,16 +44,6 @@
                     <h5 class='card-title'>{{ event.name }}<h5>
                             <h5 class='card-title'>{{ event.description }}</h5>
                             <p class='card-text'>{{ event.longDescription }}</p>
-
-                            <p>{{ event.street }} {{ event.number }}</p>
-                            <p>{{ event.zip }} {{ event.city }}</p>
-
-
-                            <p class='card-text'>
-                                <i class="bi bi-calendar-week"></i>
-                                Date:
-                                {{ event.date ? event.date|date('Y-m-d') : '' }}
-                            </p>
                 </div>
             </div>
         </div>
